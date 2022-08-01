@@ -1,0 +1,206 @@
+<!--
+ * @Author: Lee && lsh133417@163.com
+ * @Date: 2022-07-30 20:36:59
+ * @LastEditors: Lee && lsh133417@163.com
+ * @LastEditTime: 2022-08-01 11:15:10
+ * @FilePath: \chrome\demo.html
+ * @Description: 
+ * Copyright (c) 2022 by Lee email: lsh133417@163.com, All Rights Reserved.
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>新标签页</title>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="canvas.js"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css?family=Aleo");
+
+      :root {
+        font-family: "Aleo", sans-serif;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+      }
+      canvas {
+        width: 100%;
+        height: 100%;
+      }
+
+      .label {
+        font-size: 3rem;
+        background: url("text_bg.png");
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        animation: moveBg 30s linear infinite;
+      }
+
+      @keyframes moveBg {
+        0% {
+          background-position: 0% 30%;
+        }
+
+        100% {
+          background-position: 1000% 500%;
+        }
+      }
+      .middle {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        user-select: none;
+      }
+      .time {
+        color: #d99c3b;
+        text-transform: uppercase;
+        display: flex;
+        justify-content: center;
+      }
+
+      .time span {
+        padding: 0 14px;
+        font-size: 1.5rem;
+      }
+
+      .time span div {
+        font-size: 3rem;
+      }
+
+      @media (max-width: 740px) {
+        .label {
+          font-size: 2rem;
+        }
+
+        .time span {
+          padding: 0 16px;
+          font-size: 1rem;
+        }
+
+        .time span div {
+          font-size: 2rem;
+        }
+      }
+      .search {
+        width: 750px;
+        height: 50px;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        min-width: 750px;
+        position: relative;
+      }
+
+      input {
+        width: 443px;
+        height: 16px;
+
+        padding: 12px 16px;
+        padding-right: 87px;
+        font-size: 16px;
+        margin: 0;
+        vertical-align: top;
+        outline: 0;
+        box-shadow: none;
+        border-radius: 10px 0 0 10px;
+        border: 2px solid #c4c7ce;
+        background: #fff;
+        color: #222;
+        overflow: hidden;
+        box-sizing: content-box;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      input:hover {
+        /* 鼠标移入状态 */
+        border-color: #a7aab5;
+      }
+
+      input:focus {
+        /* 选中状态,边框颜色变化 */
+        border-color: #4e6ef2 !important;
+        opacity: 1;
+      }
+
+      .search span {
+        position: absolute;
+        font-size: 23px;
+        top: 10px;
+        right: 170px;
+      }
+
+      .search span:hover {
+        color: rgb(78, 110, 242);
+      }
+
+      button {
+        cursor: pointer;
+        width: 108px;
+        height: 44px;
+        line-height: 45px;
+        line-height: 44px\9;
+        padding: 0;
+        background: 0 0;
+        background-color: #4e6ef2;
+        border-radius: 0 10px 10px 0;
+        font-size: 17px;
+        color: #fff;
+        box-shadow: none;
+        font-weight: 400;
+        border: none;
+        outline: 0;
+      }
+      button:hover {
+        background-color: #4662d9;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas
+      id="c"
+      style="position: absolute; z-index: -1; text-align: center"
+    ></canvas>
+    <div class="middle">
+      <h1 class="label">Every Day About You</h1>
+      <div class="search">
+        <input id="input" type="text" />
+        <button>百度一下</button>
+      </div>
+      <div class="time">
+        <span>
+          <div id="d">00</div>
+          Love day
+        </span>
+        <span>
+          <div id="h">00</div>
+          First Met
+        </span>
+        <span>
+          <div id="m">00</div>
+          Birthday
+        </span>
+        <!-- <span>
+          <div id="s">00</div>
+          age
+        </span> -->
+      </div>
+    </div>
+    <script type="text/javascript" src="demo.js"></script>
+    <script>
+      var input = document.getElementById("input");
+      var btn = document.querySelector("button");
+      btn.addEventListener("click", function () {
+        location.href = "http://www.baidu.com/s?wd=" + input.value;
+      });
+    </script>
+  </body>
+</html>

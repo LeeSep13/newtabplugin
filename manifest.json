@@ -1,0 +1,21 @@
+{
+  "name": "新标签页",
+  "description": "Every Day About You",
+  "version": "1.0",
+  "manifest_version": 2,
+  "browser_action": {
+    "default_icon": "ex_icon.png"
+  },
+  "permissions": ["activeTab"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["jquery.min.js", "demo.js", "canvas.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "chrome_url_overrides": {
+    "newtab": "demo.html"
+  },
+  "offline_enabled": true
+}
